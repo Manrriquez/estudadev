@@ -1,0 +1,171 @@
+@import '../utilities/breakpoints';
+
+$color-dark: #111113;
+$color-blue: #3AB5FF;
+$color-google: #3AB5FF;
+$transparent: transparent;
+
+$btn-regular: (
+  dark: (
+    background: $color-dark,
+    text: #fff,
+  ),
+  blue: (
+    background: $color-blue,
+    text: #fff,
+  ),
+  google: (
+    background: $color-google,
+    text: #fff,
+  ),
+  transparent: (
+    background: $transparent,
+    text: #fff,
+  ),
+
+);
+
+$btn-icon: (
+  nav: (
+    background: $transparent,
+    text: rgba(255,255,255,.6),
+  ),
+  emoji: (
+    background: $transparent,
+    text: rgba(255,255,255,.6)f,
+  ),
+  blur: (
+    background: #ffff,
+    text: #fff,
+  ),
+);
+@mixin extends($variant) {
+    &--#{$variant} {
+      @content;
+    }
+}
+@function highlight-color($color) {
+    @return lighten($color, 9%);
+}
+
+@mixin btn{
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    vertical-align: middle;
+    user-select: none;
+    transition: background .3s;
+}
+
+@mixin btn-regular($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: 22px 20px;
+    border-radius: 12px;
+    height: 40px;
+    font-size: 16px;
+    text-decoration: none;
+    @include breakpoint($breakpoint-sm) {
+        margin-bottom: 1rem;
+    }
+    &:hover {
+        background-color: highlight-color($bg-color);
+        text-decoration: none;
+        color: $text-color;
+    }
+    &:focus {
+        outline: none;
+    }
+    &:active {
+        transform: translateY(1px);
+    }
+    &:disabled {
+      background-color: highlight-color($bg-color);
+      cursor: not-allowed;
+    }
+    svg {
+        width: 18px;
+        height: 18px;
+        fill: $text-color;
+        display: block;
+    }
+}
+@mixin btn-icon($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: 18px;
+    border-radius: 50%;
+    font-size: 16px;
+    text-decoration: none;
+
+    &:hover {
+        background-color: map-get($btn-icon, hover);
+    }
+    &:focus {
+        outline: map-get($btn-regular, focus);
+    }
+    &:active {
+        transform:map-get($btn-regular, active);
+    }
+    svg {
+        width: 18px;
+        height: 18px;
+        display: block;
+    }
+}
+.btn__regular--animate {
+    background: #2a244b;
+    color: #fff;
+    transition: background 250ms,color 250ms;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      animation: flareAnimation 5s infinite ease-in alternate;
+      background: linear-gradient(90deg,transparent 0,#8a18fc 50%,transparent 100%);
+      bottom: 0;
+      content: "";
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 0;
+    }
+}
+
+.btn__regular--month {
+  @include btn;
+
+  background: #343437;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  color: #fff;
+  position: relative;
+  font-size: 14px;
+  font-weight: 700;
+  height: 40px;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+.btn__regular {
+  @each $name, $btn in $btn-regular {
+    @include extends(#{$name}) {
+      @include btn-regular(map-get($btn, background), map-get($btn, text));
+      @include btn;
+    }
+  }
+}
+
+.btn__icon {
+    @each $name, $btn in $btn-icon {
+      @include extends(#{$name}) {
+        @include btn-icon(map-get($btn, background), map-get($btn, text));
+        @include btn;
+      }
+    }
+}
