@@ -16,7 +16,7 @@ export default defineConfig({
         main: path.resolve(__dirname, 'resources/assets/sass/main.scss')
       },
       output: {
-        file: path.resolve(__dirname, 'public/css/main.css'),
+        file: path.resolve(__dirname, 'public/assets/css/main.css'),
         format: 'es'
       }
     }
