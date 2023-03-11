@@ -1,11 +1,24 @@
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
+import { defineConfig } from 'vite'
+import sass from 'sass'
+import path from 'path'
 
 export default defineConfig({
-    plugins: [
-        laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
-            refresh: true,
-        }),
-    ],
-});
+  css: {
+    preprocessorOptions: {
+      sass: {
+        implementation: sass,
+      },
+    },
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'resources/sass/main.scss')
+      },
+      output: {
+        file: path.resolve(__dirname, 'public/css/main.css'),
+        format: 'es'
+      }
+    }
+  }
+})
