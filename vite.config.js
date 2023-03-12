@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'resources/assets/sass/main.scss')
+        main: path.resolve(__dirname, 'resources/assets/sass/main.scss'),
       },
       output: {
         file: path.resolve(__dirname, 'public/assets/css/main.css'),

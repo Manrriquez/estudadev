@@ -12,8 +12,8 @@
 
 // Layout & components
 @import "root";
-@import "reboot";
-@import "type";
+// @import "reboot";
+// @import "type";
 @import "images";
 @import "containers";
 @import "grid";
@@ -49,6 +49,3 @@
 // Utilities
 @import "utilities/api";
 // scss-docs-end import-stack
-
-@import 'bootstrap-grid';
-@import 'bootstrap-utilities';

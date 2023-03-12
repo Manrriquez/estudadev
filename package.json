@@ -3,7 +3,8 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "compile:sass": "sass resources/sass/main.scss public/css/main.css --style compressed && mv public/css/main.css public/css/main.min.css"
+        "smacss": "sass resources/assets/sass/main.scss public/assets/css/main.css --style compressed && mv public/assets/css/main.css public/assets/css/main.min.css",
+        "bootstrap": "sass resources/assets/libs/bootstrap/sass/bootstrap.scss public/assets/css/bootstrap.css --style compressed && mv public/assets/css/bootstrap.css public/assets/css/bootstrap.min.css"
     },
     "devDependencies": {
         "axios": "^1.1.2",
