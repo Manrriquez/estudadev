@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,35 @@
         @include('pages.site.__partials.navbar')
     </header>
 
+    <main>
 
+        <section class="bloco-1" id="bloco-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        aaaaaaaaaaaaa
+                    </div>
+                    <div class="col-12 col-lg-6">aaaa</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bloco-2" id="bloco-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        aaaaaaaaaaaaa
+                    </div>
+                    <div class="col-12 col-lg-6">aaaa</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        @include('pages.site.__partials.footer')
+    </footer>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 </body>
 </html>
